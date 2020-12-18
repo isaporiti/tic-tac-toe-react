@@ -11,4 +11,15 @@ describe('Square', () => {
     expect(square).toBeInTheDocument();
     expect(square).toBeEmptyDOMElement();
   });
+
+  it('should draw a token when clicked', () => {
+    const token = 'X';
+
+    const {getByLabelText} = render(<Square />);
+    const square = getByLabelText('square');
+
+    expect(square).not.toHaveTextContent(token);
+    square.click();
+    expect(square).toHaveTextContent(token)
+  });
 });
