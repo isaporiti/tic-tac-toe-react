@@ -1,12 +1,10 @@
 export default function useTokenProvider(): () => string {
-  let shouldReturnXToken: boolean = true;
+  const tokensInOrder: string[] = ['X', 'O'];
+  let nextTokenIndex: number = 0;
 
   return function () {
-    if (shouldReturnXToken) {
-      shouldReturnXToken = !shouldReturnXToken;
-      return 'X';
-    }
-    shouldReturnXToken = !shouldReturnXToken;
-    return 'O';
+    const token: string = tokensInOrder[nextTokenIndex];
+    nextTokenIndex = (nextTokenIndex + 1) % tokensInOrder.length;
+    return token;
   };
 }
