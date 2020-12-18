@@ -8,7 +8,9 @@ export default function Square({tokenProvider}: SquareProps) {
   const [token, setToken] = useState('');
 
   function placeToken() {
-    setToken(tokenProvider());
+    if (!token) {
+      setToken(tokenProvider());
+    }
   }
 
   return <>
