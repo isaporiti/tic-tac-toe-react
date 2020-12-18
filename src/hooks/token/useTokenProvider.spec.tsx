@@ -2,19 +2,19 @@ import useTokenProvider from "./useTokenProvider";
 
 describe('useTokenProvider hook function', () => {
   it('should provide an X token when invoked', () => {
-    const tokenProvider: () => string = useTokenProvider();
+    const provideToken: () => string = useTokenProvider();
 
-    const token: string = tokenProvider();
+    const token: string = provideToken();
 
     expect(token).toBe('X');
   });
 
   it('should provide X and O tokens each time when invoked intermittently', () => {
-    const tokenProvider: () => string = useTokenProvider();
+    const provideToken: () => string = useTokenProvider();
 
-    expect(tokenProvider()).toBe('X');
-    expect(tokenProvider()).toBe('O');
-    expect(tokenProvider()).toBe('X');
-    expect(tokenProvider()).toBe('O');
+    expect(provideToken()).toBe('X');
+    expect(provideToken()).toBe('O');
+    expect(provideToken()).toBe('X');
+    expect(provideToken()).toBe('O');
   });
 });
