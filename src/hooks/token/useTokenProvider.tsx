@@ -6,6 +6,7 @@ export default function useTokenProvider(): () => string {
       shouldReturnXToken = !shouldReturnXToken;
       return 'X';
     }
+    shouldReturnXToken = !shouldReturnXToken;
     return 'O';
   };
 }

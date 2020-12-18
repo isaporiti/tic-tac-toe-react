@@ -9,9 +9,11 @@ describe('useTokenProvider hook function', () => {
     expect(token).toBe('X');
   });
 
-  it('should provide a O token after providing an X token when invoked intermittently', () => {
+  it('should provide X and O tokens each time when invoked intermittently', () => {
     const tokenProvider: () => string = useTokenProvider();
 
+    expect(tokenProvider()).toBe('X');
+    expect(tokenProvider()).toBe('O');
     expect(tokenProvider()).toBe('X');
     expect(tokenProvider()).toBe('O');
   });
