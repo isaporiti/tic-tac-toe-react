@@ -1,10 +1,14 @@
 import React, {useState} from 'react';
 
-export default function Square() {
+interface SquareProps {
+  tokenProvider: () => string
+}
+
+export default function Square({tokenProvider}: SquareProps) {
   const [token, setToken] = useState('');
 
   function placeToken() {
-    setToken('X');
+    setToken(tokenProvider());
   }
 
   return <>
