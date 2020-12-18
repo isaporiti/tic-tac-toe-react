@@ -14,17 +14,6 @@ describe('Square', () => {
     expect(square).toBeEmptyDOMElement();
   });
 
-  it('should draw a token when clicked', () => {
-    const token: string = 'X';
-    const tokenProvider: () => string = jest.fn();
-
-    const {getByLabelText} = render(<Square tokenProvider={tokenProvider}/>);
-    const square: HTMLElement = getByLabelText('square');
-
-    expect(square).not.toHaveTextContent(token);
-    square.click();
-    expect(square).toHaveTextContent(token)
-  });
 
   it('should get the token from a token provider function when clicked', () => {
     const token: string = 'X';
@@ -32,9 +21,10 @@ describe('Square', () => {
       return token;
     });
 
-    const {getByLabelText} = render(<Square tokenProvider={tokenProvider} />);
+    const {getByLabelText} = render(<Square tokenProvider={tokenProvider}/>);
     const square: HTMLElement = getByLabelText('square');
 
+    expect(square).not.toHaveTextContent(token);
     square.click();
     expect(tokenProvider).toBeCalled();
     expect(square).toHaveTextContent(token)
